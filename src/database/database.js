@@ -1,6 +1,13 @@
 import Sequelize from 'sequelize';
 
-export const sequelize = new Sequelize('clinica', 'postgres', '54321', {
-    host: 'localhost',
-    dialect:'postgres'
+const password = process.env.PASSWORDPS
+export const sequelize = new Sequelize('apiclinicalop', 'fl0user', 'password', {
+    host: 'ep-shiny-brook-53488213.eu-central-1.aws.neon.fl0.io',
+    dialect:'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
 });
